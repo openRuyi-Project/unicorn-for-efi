@@ -57,7 +57,12 @@ typedef __UINTMAX_TYPE__ uintmax_t;
 typedef __UINTPTR_TYPE__ uintptr_t;
 
 typedef __PTRDIFF_TYPE__ ptrdiff_t;
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
+/* Preserve the EFI BOOLEAN interface when bool is a C23 keyword. */
+#define bool BOOLEAN
+#else
 typedef BOOLEAN bool;
+#endif
 typedef VA_LIST va_list;
 
 typedef __INT_FAST8_TYPE__ int_fast8_t;
