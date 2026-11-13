@@ -434,7 +434,7 @@ HAVE_MREMAP               default: 1 on linux, else 0
   If true realloc() uses mremap() to re-allocate large blocks and
   extend or shrink allocation spaces.
 
-MMAP_CLEARS               default: 1 except on WINCE.
+MMAP_CLEARS               default: 0 in this EFI port.
   True if mmap clears memory so calloc doesn't need to. This is true
   for standard unix mmap using /dev/zero and on WIN32 except for WINCE.
 
@@ -599,7 +599,7 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #ifdef _WIN32_WCE /* WINCE reportedly does not clear */
 #define MMAP_CLEARS 0
 #else
-#define MMAP_CLEARS 1
+#define MMAP_CLEARS 0
 #endif /* _WIN32_WCE */
 #endif /*MMAP_CLEARS */
 #endif  /* WIN32 */
@@ -679,7 +679,7 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #define HAVE_MMAP 1
 #endif  /* HAVE_MMAP */
 #ifndef MMAP_CLEARS
-#define MMAP_CLEARS 1
+#define MMAP_CLEARS 0
 #endif  /* MMAP_CLEARS */
 #ifndef HAVE_MREMAP
 #ifdef linux
